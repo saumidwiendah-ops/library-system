@@ -17,8 +17,5 @@ Simple Library Information System built with Laravel.
 2. Open the project folder.
 3. Install dependencies:
 
-   ```bash
-   composer install
-
 ## Author
 Dwi Endah Saumi
