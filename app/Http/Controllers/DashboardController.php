@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Book;
+use App\Models\Category;
+use App\Models\Member;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $books = 8;
-        $members = 5;
-        $categories = 5;
+        $books = Book::count();
+        $members = Member::count();
+        $categories = Category::count();
 
         return view('dashboard.index', compact('books', 'members', 'categories'));
     }

@@ -1,17 +1,18 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Members</title>
+</head>
+<body>
 
-@section('title', 'Members')
+    <h1>Daftar Anggota</h1>
 
-@section('content')
+    @foreach($members as $member)
+        <p>Nama: {{ $member->nama }}</p>
+        <p>Email: {{ $member->email }}</p>
+        <p>No. HP: {{ $member->no_hp }}</p>
+        <hr>
+    @endforeach
 
-    <h2>Daftar Anggota</h2>
-
-    <p>Sistem Informasi Perpustakaan</p>
-
-    <ul>
-        @foreach($members as $member)
-            <li>{{ $member }}</li>
-        @endforeach
-    </ul>
-
-@endsection
+</body>
+</html>

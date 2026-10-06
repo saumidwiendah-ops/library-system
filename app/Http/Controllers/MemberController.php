@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
     public function index()
     {
-        $members = [
-            'Firmansyah Saputra',
-            'Ahmad Budi',
-            'Putri Anzani',
-            'Dwi Endah Saumi',
-            'Eka Pratama'
-        ];
+        $members = Member::all();
 
         return view('members.index', compact('members'));
     }

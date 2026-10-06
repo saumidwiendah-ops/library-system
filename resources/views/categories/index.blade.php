@@ -6,12 +6,8 @@
 
     <h2>Daftar Kategori</h2>
 
-    <p>Sistem Informasi Perpustakaan</p>
-
-    <ul>
-        @foreach($categories as $category)
-            <li>{{ $category }}</li>
-        @endforeach
-    </ul>
+    @foreach($categories as $category)
+        <p>{{ $category->nama }}</p>
+    @endforeach
 
 @endsection
