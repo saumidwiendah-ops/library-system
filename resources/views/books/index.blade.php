@@ -1,22 +1,44 @@
-@extends('layouts.app')
+<h1>Daftar Buku</h1>
 
-@section('title', 'Books')
+@if (session('success'))
+    <p style="color: green;">
+        {{ session('success') }}
+    </p>
+@endif
 
-@section('content')
+<a href="/books/create">+ Tambah Buku</a>
 
-    <h2>Daftar Buku</h2>
+<br><br>
 
-    @foreach($books as $book)
-        <div>
-            <h3>{{ $book->judul }}</h3>
-            <p>Penulis: {{ $book->penulis }}</p>
-            <p>Tahun Terbit: {{ $book->tahun_terbit }}</p>
-            <p>Stok: {{ $book->stok }}</p>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>No</th>
+        <th>Judul</th>
+        <th>Penulis</th>
+        <th>Tahun Terbit</th>
+        <th>Stok</th>
+        <th>Aksi</th>
+    </tr>
 
-            <a href="{{ url('/books/' . $book->id) }}">Detail Buku</a>
+    @foreach ($books as $book)
+    <tr>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{ $book->judul }}</td>
+        <td>{{ $book->penulis }}</td>
+        <td>{{ $book->tahun_terbit }}</td>
+        <td>{{ $book->stok }}</td>
+        <td>
+            <a href="/books/{{ $book->id }}">Detail</a> |
+            <a href="/books/{{ $book->id }}/edit">Edit</a> |
 
-            <hr>
-        </div>
+            <form action="/books/{{ $book->id }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('Yakin ingin menghapus buku ini?')">
+                    Hapus
+                </button>
+            </form>
+        </td>
+    </tr>
     @endforeach
-
-@endsection
+</table>
